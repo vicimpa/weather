@@ -10,5 +10,5 @@ upgrade(app)
 
 Logger.log('Create application')
 
-export {app}
+export { app }
 export default app

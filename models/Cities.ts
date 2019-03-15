@@ -33,15 +33,15 @@ export class City {
       let data: City[] = []
 
       database.each(`SELECt * FROM cities WHERE name LIKE '${query}%' LIMIT ${limit}`, (err, row) => {
-        if(err)
+        if (err)
           return reject(err)
 
-        let {id, name, country, lon, lat} = row
+        let { id, name, country, lon, lat } = row
 
         data.push(new City([id, name, country, lon, lat]))
 
       }, () => resolve(data))
-    }) 
+    })
   }
 
   static async check(name: string) {
@@ -49,11 +49,11 @@ export class City {
 
     return new Promise<City>((resolve, reject) => {
       database.all(`SELECt id FROM cities WHERE name LIKE '${name}' LIMIT 1`, (err, rows) => {
-        if(err)
+        if (err)
           return reject(err)
 
-        if(rows && rows[0]) {
-          let {id, name, country, lon, lat} = rows[0]
+        if (rows && rows[0]) {
+          let { id, name, country, lon, lat } = rows[0]
 
           resolve(new City([id, name, country, lon, lat]))
         }
@@ -66,7 +66,7 @@ export class City {
   static async count() {
     return new Promise<number>((resolve, reject) => {
       database.all(`SELECT id FROM cities`, (err, rows) => {
-        if(err)
+        if (err)
           return reject(err)
 
         resolve(rows ? rows.length : 0)

@@ -21,5 +21,5 @@ export function host() {
 
 Logger.log('Create server')
 
-export {server}
+export { server }
 export default server

@@ -7,11 +7,11 @@ const router = Router()
 
 upgrade(router)
 
-router.get('/input', async (req, res) => {
-  let { query } = req.query
-  
+router.get(['/input', '/input/:data'], async (req, res) => {
+  let { data } = req.params
+
   res.send(await City.find(
-    query || '', citiesLimit))
+    data || '', citiesLimit))
 })
 
 export default router

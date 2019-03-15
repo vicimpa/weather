@@ -5,7 +5,7 @@ const router = Router()
 const { cwd } = process
 
 router.get('/', (req, res) =>
-  res.sendFile(indexPage, { root: cwd()}))
+  res.sendFile(indexPage, { root: cwd() }))
 
 for (let local in publicPath)
   router.use(local, staticFolder(publicPath[local]))

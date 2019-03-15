@@ -16,7 +16,7 @@ import weatherRoute from "./routes/weather";
 app.use(mainRoute)
 app.use(citiesRoute)
 app.use(weatherRoute)
- 
+
 async function main() {
   let count = await City.count()
   Logger.log(`SQLite3 have ${count} cities`)
