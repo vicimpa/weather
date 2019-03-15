@@ -10,12 +10,15 @@ upgrade(router)
 
 router.get('/byid/:id', async (req, res) => {
   let { id } = req.params
-  res.send(await weather.byId(id))
+  
+  return await weather.byId(id)
 })
 
 router.get(['/byname/:name', '/byname/:name/:country'], async (req, res) => {
   let { name, country } = req.params
-  res.send(await weather.byName(name, country))
+
+  return await weather.byName(
+    name, country)
 })
 
 

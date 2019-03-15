@@ -13,7 +13,15 @@ export function upgrade(app: Router | Express.Application) {
       let fff = [eval(`(h) => {
         return async function(${argvs.join(', ')}) {
           try {
-            await h(${argvs.join(', ')})
+            let res = await h(${argvs.join(', ')})
+
+            if(res) {
+              for(let i of [${argvs.join(', ')}]) {
+                if(i && i.send)
+                  return i.send(res)
+              }
+            }
+              
           } catch(err) {
             ${argvs.pop()}(err)
           }

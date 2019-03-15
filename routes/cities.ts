@@ -10,8 +10,8 @@ upgrade(router)
 router.get(['/input', '/input/:data'], async (req, res) => {
   let { data } = req.params
 
-  res.send(await City.find(
-    data || '', citiesLimit))
+  return await City.find(
+    data || '', citiesLimit)
 })
 
 export default router
